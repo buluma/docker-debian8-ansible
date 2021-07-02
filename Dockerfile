@@ -22,6 +22,6 @@ RUN  pwd && ls -a . && ls /usr/src
 
 # Install Python
 # RUN cd /usr/src/Python-3.9.6 && sudo ./configure --enable-optimizations && sudo make altinstall
-RUN cd /usr/src && ls -a
+RUN cd /usr/src && sudo tar xzf Python-3.7.9.tgz && ls -a
 
 RUN cd Python-3.9.6 && pwd
