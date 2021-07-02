@@ -2,6 +2,7 @@ FROM debian:jessie
 LABEL maintainer="Michael Buluma"
 
 ENV DEBIAN_FRONTEND noninteractive
+ENV pip_packages "wheel cryptography ansible"
 
 # Install dependencies.
 # RUN apt-get update \
@@ -39,3 +40,7 @@ RUN apt-get update \
 
 # Check version
 RUN python3 --version && pip3 --version
+
+# Install Ansible via pip.
+RUN pip install --upgrade pip setuptools==44.1.1 \
+    && pip install $pip_packages
