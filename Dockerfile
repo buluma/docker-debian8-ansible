@@ -21,6 +21,12 @@ RUN python3 --version
 # Check pip version
 RUN python3 -m pip --version
 
+# Upgrade pip to latest version1.
+RUN python3 -m pip install --upgrade pip setuptools wheel
+
+# Check pip version2
+RUN python3 -m pip --version
+
 # Upgrade pip to latest version.
 # RUN sudo pip3 install --upgrade pip
 # RUN python3 -m pip install --upgrade pip
