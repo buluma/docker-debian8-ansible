@@ -15,7 +15,7 @@ RUN apt-get install -y --no-install-recommends wget build-essential checkinstall
 # Test wget
 RUN wget -h
 
-RUN pwd && cd /usr/src && sudo wget --no-check-certificate https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tgz 
+RUN pwd && cd /usr/src && sudo wget --no-check-certificate https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tgz && tar xzf Python-3.7.9.tgz && ls -a
 
 RUN  pwd && ls -a . && ls /usr/src
 # && sudo tar xzf Python-3.9.6.tgz
