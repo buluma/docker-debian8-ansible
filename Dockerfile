@@ -15,16 +15,16 @@ RUN apt-get update \
 
 ENV pip_packages "wheel cryptography ansible"
 
-# Install Ansible via pip.
-RUN pip install --upgrade pip setuptools==44.1.1 \
-    && pip install $pip_packages
+# Remove python2
+RUN apt purge -y python2.7-minimal
 
-COPY initctl_faker .
-RUN chmod +x initctl_faker && rm -fr /sbin/initctl && ln -s /initctl_faker /sbin/initctl
+# You already have Python3 but 
+# don't care about the version 
+RUN ln -s /usr/bin/python3 /usr/bin/python
 
-# Install Ansible inventory file.
-RUN mkdir -p /etc/ansible
-RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
+# Same for pip
+RUN apt install -y python3-pip
+RUN ln -s /usr/bin/pip3 /usr/bin/pip
 
-VOLUME ["/sys/fs/cgroup"]
-CMD ["/lib/systemd/systemd"]
+# Confirm the new version of Python: 3
+RUN python --version
