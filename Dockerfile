@@ -15,6 +15,9 @@ RUN apt-get update \
 
 ENV pip_packages "wheel cryptography ansible"
 
+# Upgrade PIP
+RUN pip install --upgrade pip && pip install --upgrade setuptools
+
 # Install Ansible via pip.
 RUN pip install --upgrade pip setuptools \
     && pip install $pip_packages
