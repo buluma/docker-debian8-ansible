@@ -4,7 +4,7 @@ LABEL maintainer="Jeff Geerling"
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install dependencies.
-RUN apt-get update && sudo apt-get upgrade
+RUN apt-get update && apt-get upgrade
 
 RUN apt-get install wget build-essential checkinstall sudo \
     && apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev \
