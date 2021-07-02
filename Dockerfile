@@ -17,22 +17,26 @@ RUN apt-get update \
 
 # check current versio
 RUN python3 --version
+
+# Check pip version
+RUN python3 -m pip --version
+
 # Upgrade pip to latest version.
 # RUN sudo pip3 install --upgrade pip
-RUN python3 -m pip install --upgrade pip
+# RUN python3 -m pip install --upgrade pip
 
 # Install Ansible via pip.
-RUN sudo pip3 install $pip_packages
+# RUN sudo pip3 install $pip_packages
 
-COPY initctl_faker .
-RUN chmod +x initctl_faker && rm -fr /sbin/initctl && ln -s /initctl_faker /sbin/initctl
+# COPY initctl_faker .
+# RUN chmod +x initctl_faker && rm -fr /sbin/initctl && ln -s /initctl_faker /sbin/initctl
 
 # Install Ansible inventory file.
-RUN mkdir -p /etc/ansible
-RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
+# RUN mkdir -p /etc/ansible
+# RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 
 # Make sure systemd doesn't start agettys on tty[1-6].
-RUN rm -f /lib/systemd/system/multi-user.target.wants/getty.target
+# RUN rm -f /lib/systemd/system/multi-user.target.wants/getty.target
 
-VOLUME ["/sys/fs/cgroup"]
-CMD ["/lib/systemd/systemd"]
+# VOLUME ["/sys/fs/cgroup"]
+# CMD ["/lib/systemd/systemd"]
