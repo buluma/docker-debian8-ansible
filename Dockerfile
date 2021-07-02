@@ -17,7 +17,7 @@ RUN wget -h
 
 RUN pwd && cd /usr/src && sudo wget --no-check-certificate https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tgz 
 
-RUN ls -a .
+RUN  pwd && ls -a .
 # && sudo tar xzf Python-3.9.6.tgz
 
 # Install Python
