@@ -15,4 +15,7 @@ RUN apt-get install -y --no-install-recommends wget build-essential checkinstall
 # Test wget
 RUN wget -h
 
-RUN pwd && cd /usr/src && sudo wget --no-check-certificate https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tgz
+RUN pwd && cd /usr/src && sudo wget --no-check-certificate https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tgz && sudo tar xzf Python-3.9.6.tgz
+
+# Install Python
+RUN cd Python-3.9.6 && sudo ./configure --enable-optimizations && sudo make altinstall
