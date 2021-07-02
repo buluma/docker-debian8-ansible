@@ -6,4 +6,5 @@ ENV pip_packages "wheel cryptography ansible"
 
 
 # Pre-Check version
-RUN python --version && pip --version
+RUN sudo apt-get update \
+    && apt-get install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev
