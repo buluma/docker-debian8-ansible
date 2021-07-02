@@ -51,5 +51,4 @@ RUN python3 -m pip install --upgrade setuptools==44.1.1 pip==18.1
 RUN python3 -m pip --version
 
 # Install Ansible via pip.
-RUN pip install --upgrade pip setuptools \
-    && pip install $pip_packages
+RUN pip install $pip_packages
