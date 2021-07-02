@@ -5,9 +5,6 @@ ENV DEBIAN_FRONTEND noninteractive
 
 ENV pip_packages "ansible cryptography"
 
-# Remove defaults
-RUN apt-get remove python-setuptools
-
 # Install dependencies.
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -19,7 +16,8 @@ RUN apt-get update \
     && apt-get clean
 
 # Upgrade pip to latest version.
-RUN sudo pip3 install --upgrade pip
+# RUN sudo pip3 install --upgrade pip
+RUN python3 -m pip install --upgrade pip
 
 # Install Ansible via pip.
 RUN sudo pip3 install $pip_packages
