@@ -20,7 +20,7 @@ RUN apt-get update \
     liblzma-dev 
 
 # Install pythin 3.6
-RUN apt-get install python3.6 python3.6-venv 
+# RUN apt-get install python3.6 python3.6-venv 
 
 # which PIP
-RUN which pip
+RUN python --version && python3 --version
