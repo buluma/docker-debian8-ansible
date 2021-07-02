@@ -45,4 +45,4 @@ RUN python3 --version && pip3 --version
 # RUN pip3 install --upgrade pip3 setuptools==44.1.1 \
 #     && pip3 install $pip_packages
     
-RUN python3 -m pip install --upgrade pip setuptools==44.1.1 \
+RUN python3 get-pip.py pip==9.0.2 wheel==0.30.0 setuptools==28.8.0
