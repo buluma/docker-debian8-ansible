@@ -46,7 +46,7 @@ RUN python3 --version && pip3 --version
 #     && pip3 install $pip_packages
     
 # RUN python3 get-pip.py pip==9.0.2 wheel==0.30.0 setuptools==28.8.0
-RUN python3 -m pip install --upgrade setuptools==44.1.1 pip==18.1
+RUN python3 -m pip install --upgrade setuptools==44.1.1 pip==19.1
 
 RUN python3 -m pip --version
 
