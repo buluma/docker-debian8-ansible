@@ -1,7 +1,7 @@
 FROM debian:jessie
 LABEL maintainer="Michael Buluma"
 
-ENV DEBIAN_FRONTEND noninteractive
+ARG DEBIAN_FRONTEND noninteractive
 ENV pip_packages "wheel cryptography ansible"
 
 
