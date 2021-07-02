@@ -39,7 +39,7 @@ RUN apt-get update \
 #     libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev zlib1g-dev
 
 # Update python
-RUN apt-get install python3.6
+RUN sudo apt-get update
 
 # Check version
 RUN python3 --version && pip3 --version
