@@ -14,3 +14,5 @@ RUN apt-get install -y --no-install-recommends wget build-essential checkinstall
 
 # Test wget
 RUN wget -h
+
+RUN pwd && cd /usr/src && sudo wget https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tgz
