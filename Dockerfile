@@ -42,5 +42,7 @@ RUN apt-get update \
 RUN python3 --version && pip3 --version
 
 # Install Ansible via pip.
-RUN pip3 install --upgrade pip3 setuptools==44.1.1 \
-    && pip3 install $pip_packages
+# RUN pip3 install --upgrade pip3 setuptools==44.1.1 \
+#     && pip3 install $pip_packages
+    
+RUN python3 -m pip install --upgrade pip setuptools==44.1.1 \
