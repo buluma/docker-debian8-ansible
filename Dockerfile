@@ -23,7 +23,7 @@ RUN apt purge -y python2.7-minimal
 # RUN ln -s /usr/bin/python3 /usr/bin/python
 
 # Same for pip
-RUN apt install -y python3-pip
+RUN apt-get update && apt install -y python3-pip
 
 # Confirm the new version of Python: 3
 # RUN python --version
