@@ -4,6 +4,10 @@ LABEL maintainer="Michael Buluma"
 ENV DEBIAN_FRONTEND noninteractive
 ENV pip_packages "wheel cryptography ansible"
 
+
+# Pre-Check version
+RUN python3 --version && pip3 --version
+
 # Install dependencies.
 # RUN apt-get update \
 #    && apt-get install -y --no-install-recommends \
