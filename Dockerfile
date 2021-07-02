@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV pip_packages "ansible cryptography"
 
 # Remove defaults
-RUN sudo apt-get remove python-setuptools
+RUN apt-get remove python-setuptools
 
 # Install dependencies.
 RUN apt-get update \
