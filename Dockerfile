@@ -15,6 +15,8 @@ RUN apt-get update \
     && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
     && apt-get clean
 
+# check current versio
+RUN python3 --version
 # Upgrade pip to latest version.
 # RUN sudo pip3 install --upgrade pip
 RUN python3 -m pip install --upgrade pip
