@@ -5,7 +5,7 @@ on:
   pull_request:
   push:
     branches:
-      - testing-1
+      -main
   schedule:
     - cron: '40 * * * *'
   workflow_dispatch:
