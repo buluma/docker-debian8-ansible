@@ -18,6 +18,9 @@ ENV pip_packages "wheel cryptography ansible"
 # Install Ansible via pip.
 # RUN pip install --upgrade pip setuptools \
  #   && pip install $pip_packages
+ 
+ # Check ansible installed
+ RUN ansible --version
 
 COPY initctl_faker .
 RUN chmod +x initctl_faker && rm -fr /sbin/initctl && ln -s /initctl_faker /sbin/initctl
