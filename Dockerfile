@@ -3,20 +3,28 @@ LABEL maintainer="Michael Buluma"
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ENV pip_packages "ansible cryptography"
-
 # Install dependencies.
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-       sudo systemd systemd-sysv \
-       build-essential wget libffi-dev libssl-dev \
-       python3-pip python3-dev python3-setuptools python3-wheel python3-apt \
+       sudo \
+       build-essential libffi-dev libssl-dev \
+       python-pip python-dev \
     && rm -rf /var/lib/apt/lists/* \
     && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
     && apt-get clean
 
-# Upgrade pip to latest version.
-# RUN pip3 install --upgrade pip
+ENV pip_packages "wheel cryptography ansible"
 
 # Install Ansible via pip.
-RUN pip3 install $pip_packages
+RUN pip install --upgrade pip setuptools \
+    && pip install $pip_packages
+
+COPY initctl_faker .
+RUN chmod +x initctl_faker && rm -fr /sbin/initctl && ln -s /initctl_faker /sbin/initctl
+
+# Install Ansible inventory file.
+RUN mkdir -p /etc/ansible
+RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
+
+VOLUME ["/sys/fs/cgroup"]
+CMD ["/lib/systemd/systemd"]
