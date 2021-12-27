@@ -12,3 +12,6 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
     && apt-get clean
+
+# Upgrade pip to latest version.
+RUN pip3 install --upgrade pip
