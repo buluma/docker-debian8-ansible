@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM buluma/debian:jessie
 LABEL maintainer="Michael Buluma"
 
 ENV DEBIAN_FRONTEND noninteractive
