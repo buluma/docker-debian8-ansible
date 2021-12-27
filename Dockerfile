@@ -3,6 +3,8 @@ LABEL maintainer="Michael Buluma"
 
 ENV DEBIAN_FRONTEND noninteractive
 
+ENV pip_packages "ansible cryptography"
+
 # Install dependencies.
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -14,4 +16,7 @@ RUN apt-get update \
     && apt-get clean
 
 # Upgrade pip to latest version.
-RUN pip3 install --upgrade pip3
+# RUN pip3 install --upgrade pip
+
+# Install Ansible via pip.
+RUN pip3 install $pip_packages
