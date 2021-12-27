@@ -14,4 +14,4 @@ RUN apt-get update \
     && apt-get clean
 
 # Upgrade pip to latest version.
-RUN pip3 install --upgrade pip
+RUN pip3 install --upgrade pip3
