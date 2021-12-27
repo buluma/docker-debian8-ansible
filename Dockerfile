@@ -3,31 +3,32 @@ LABEL maintainer="Michael Buluma"
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ENV pip_packages "wheel cryptography ansible"
-
 # Install dependencies.
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
        sudo \
        build-essential libffi-dev libssl-dev \
        python-pip python-dev \
+       ansible \
     && rm -rf /var/lib/apt/lists/* \
     && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
     && apt-get clean
 
-# Remove python2
-RUN apt purge -y python2.7-minimal
-
-# You already have Python3 but 
-# don't care about the version 
-# RUN ln -s /usr/bin/python3 /usr/bin/python
-
-# Same for pip
-RUN apt-get update && apt install -y python3-pip
-
-# Confirm the new version of Python: 3
-# RUN python --version
-RUN pip3 --version
+ENV pip_packages "wheel cryptography ansible"
 
 # Install Ansible via pip.
-RUN pip3 install $pip_packages
+# RUN pip install --upgrade pip setuptools \
+ #   && pip install $pip_packages
+ 
+ # Check ansible installed
+ RUN ansible --version
+
+COPY initctl_faker .
+RUN chmod +x initctl_faker && rm -fr /sbin/initctl && ln -s /initctl_faker /sbin/initctl
+
+# Install Ansible inventory file.
+RUN mkdir -p /etc/ansible
+RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
+
+VOLUME ["/sys/fs/cgroup"]
+CMD ["/lib/systemd/systemd"]

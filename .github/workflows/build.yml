@@ -5,7 +5,7 @@ on:
   pull_request:
   push:
     branches:
-      - main
+      - testing-1
   schedule:
     - cron: '40 * * * *'
   workflow_dispatch:
@@ -24,9 +24,9 @@ jobs:
 
       - name: Run the built image.
         run: docker run --name test-container -d --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro docker-test
-
-      # - name: Verify Ansible is accessible in the built image.
-       # run: docker exec --tty test-container env TERM=xterm ansible --version
+        
+      - name: Verify Ansible is accessible in the built image.
+        run: docker exec --tty test-container env TERM=xterm ansible --version
 
   # If on master branch, build and release image.
   release:
