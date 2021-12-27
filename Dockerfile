@@ -23,8 +23,8 @@ COPY initctl_faker .
 RUN chmod +x initctl_faker && rm -fr /sbin/initctl && ln -s /initctl_faker /sbin/initctl
 
 # Install Ansible inventory file.
-# RUN mkdir -p /etc/ansible
-# RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
+RUN mkdir -p /etc/ansible
+RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 
 VOLUME ["/sys/fs/cgroup"]
 CMD ["/lib/systemd/systemd"]
